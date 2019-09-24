@@ -11,8 +11,8 @@ class Profile(models.Model):
         return self.user.username + ' Profile'
 
     #override the save to resize app
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
         img = Image.open(self.image.path)
 
         if img.height > 200 or img.width > 200:
